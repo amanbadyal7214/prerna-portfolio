@@ -18,42 +18,45 @@ export default function ResumeModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-xl animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 bg-black/85 backdrop-blur-xl animate-in fade-in duration-200">
       
       {/* Backdrop click */}
       <div className="absolute inset-0" onClick={onClose}></div>
 
-      <div className="relative w-full max-w-4xl max-h-[92vh] bg-[#fbfaf7] text-neutral-900 rounded-3xl shadow-2xl overflow-hidden flex flex-col z-10 border border-black/10">
+      <div className="relative w-full max-w-4xl max-h-[92dvh] sm:max-h-[92vh] bg-[#fbfaf7] text-neutral-900 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col z-10 border border-black/10">
         
         {/* Actions Bar */}
-        <div className="p-4 sm:p-5 bg-[#ede8df] border-b border-black/10 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-[#ff5722]"></span>
-            <span className="font-tech text-xs uppercase tracking-wider text-neutral-700 font-bold">
-              Official Resume — Prerna Sablok
+        <div className="p-3 sm:p-5 bg-[#ede8df] border-b border-black/10 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5722] shrink-0"></span>
+            <span className="font-tech text-xs uppercase tracking-wider text-neutral-800 font-bold truncate">
+              <span className="hidden sm:inline">Official Resume — </span>Prerna Sablok
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               onClick={handleCopyEmail}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/80 hover:bg-white text-xs font-tech border border-black/10 transition-colors cursor-pointer"
+              className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-lg bg-white/80 hover:bg-white text-xs font-tech border border-black/10 transition-colors cursor-pointer active:scale-95"
+              title="Copy email address"
             >
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copied ? 'Copied Email!' : 'Copy Email'}</span>
+              <span className="hidden sm:inline">{copied ? 'Copied Email!' : 'Copy Email'}</span>
             </button>
 
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#111215] hover:bg-[#20232a] text-white text-xs font-tech transition-colors cursor-pointer shadow-sm"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-lg bg-[#111215] hover:bg-[#20232a] text-white text-xs font-tech transition-colors cursor-pointer shadow-sm active:scale-95"
+              title="Print or Save PDF"
             >
               <Printer className="w-3.5 h-3.5 text-[#ff5722]" />
-              <span>Print / Save PDF</span>
+              <span className="hidden sm:inline">Print / PDF</span>
             </button>
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-full hover:bg-black/10 text-neutral-600 hover:text-black transition-colors cursor-pointer ml-2"
+              className="p-1.5 rounded-full hover:bg-black/10 text-neutral-600 hover:text-black transition-colors cursor-pointer ml-1"
+              aria-label="Close resume"
             >
               <X className="w-5 h-5" />
             </button>
@@ -61,7 +64,7 @@ export default function ResumeModal({ isOpen, onClose }) {
         </div>
 
         {/* Scrollable Printable Resume Sheet */}
-        <div id="printable-resume" className="flex-1 overflow-y-auto p-6 sm:p-10 md:p-12 space-y-6 font-sans text-neutral-900 bg-[#fbfaf7]">
+        <div id="printable-resume" className="flex-1 overflow-y-auto p-4 sm:p-10 md:p-12 space-y-5 sm:space-y-6 font-sans text-neutral-900 bg-[#fbfaf7]">
           
           {/* Header */}
           <div className="text-center space-y-2 border-b border-neutral-300 pb-5">

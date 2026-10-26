@@ -8,6 +8,11 @@
     --font-mono-tech: 'Space Grotesk', monospace;
   }
 
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body {
     font-family: var(--font-sans);
     background-color: #0b0c0e;
@@ -111,13 +116,39 @@
   animation: pulseGlow 4s ease-in-out infinite;
 }
 
-/* Text stroke utilities */
+/* Text stroke utilities with crisp high-DPI contrast */
 .text-stroke-outline {
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.25);
+  -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.4);
   color: transparent;
+}
+
+@media (min-width: 640px) {
+  .text-stroke-outline {
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.35);
+  }
 }
 
 .text-stroke-outline-active {
   -webkit-text-stroke: 1.5px #ff5722;
   color: transparent;
+}
+
+/* Mobile & Touch Utilities */
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile tap target highlight removal */
+* {
+  -webkit-tap-highlight-color: transparent;
 }

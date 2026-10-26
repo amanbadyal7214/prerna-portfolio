@@ -24,14 +24,14 @@ export default function SkillsSection() {
   };
 
   return (
-    <section id="skills" className="py-24 md:py-32 bg-white text-neutral-900 relative border-t border-neutral-200">
+    <section id="skills" className="py-16 sm:py-24 md:py-32 bg-white text-neutral-900 relative border-t border-neutral-200">
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#ff5722]/5 blur-[140px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-16">
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-tech text-[#ff5722] tracking-wider uppercase mb-3 font-semibold">
               <Layers className="w-3.5 h-3.5 text-[#ff5722]" />
@@ -40,28 +40,29 @@ export default function SkillsSection() {
             <h2 className="font-display font-black text-3xl sm:text-5xl md:text-6xl tracking-tighter uppercase text-neutral-900 leading-none">
               Skills & Systems.
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-neutral-600 font-normal max-w-xl">
+            <p className="mt-2 text-xs sm:text-base text-neutral-600 font-normal max-w-xl">
               Equipped with deep expertise in human research, Figma component architecture, and design system governance.
             </p>
           </div>
 
           {/* Tab Switcher */}
-          <div className="flex flex-wrap gap-2 bg-neutral-100 p-1.5 rounded-2xl border border-neutral-200">
+          <div className="grid grid-cols-3 gap-1 bg-neutral-100 p-1.5 rounded-2xl border border-neutral-200 w-full md:w-auto">
             {[
-              { id: 'design', label: 'Design Disciplines' },
-              { id: 'tools', label: 'Tools & AI Stack' },
-              { id: 'playground', label: 'Interactive UI Kit' },
+              { id: 'design', full: 'Design Disciplines', short: 'Disciplines' },
+              { id: 'tools', full: 'Tools & AI Stack', short: 'Tools' },
+              { id: 'playground', full: 'Interactive UI Kit', short: 'UI Kit' },
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2 rounded-xl text-xs font-tech transition-all cursor-pointer font-medium ${
+                className={`px-2.5 sm:px-4 py-2 rounded-xl text-xs font-tech text-center transition-all cursor-pointer font-medium active:scale-95 ${
                   activeTab === tab.id
                     ? 'bg-[#ff5722] text-white shadow-md font-semibold'
                     : 'text-neutral-600 hover:text-black hover:bg-neutral-200/60'
                 }`}
               >
-                {tab.label}
+                <span className="hidden sm:inline">{tab.full}</span>
+                <span className="sm:hidden">{tab.short}</span>
               </button>
             ))}
           </div>
@@ -153,16 +154,16 @@ export default function SkillsSection() {
 
         {/* Tab 3: Interactive UI Kit & Figma Playground */}
         {activeTab === 'playground' && (
-          <div className="rounded-3xl bg-[#F9FAFB] border border-neutral-200 p-6 sm:p-10 shadow-xl animate-in fade-in duration-300">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="rounded-2xl sm:rounded-3xl bg-[#F9FAFB] border border-neutral-200 p-4 sm:p-10 shadow-xl animate-in fade-in duration-300">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
               
               {/* Controls Column */}
-              <div className="lg:col-span-5 space-y-6">
+              <div className="lg:col-span-5 space-y-5 sm:space-y-6">
                 <div>
                   <span className="font-tech text-xs text-[#ff5722] uppercase tracking-widest block mb-1 font-bold">
                     Live Figma Component Sandbox
                   </span>
-                  <h3 className="font-display font-black text-2xl text-neutral-900">
+                  <h3 className="font-display font-black text-xl sm:text-2xl text-neutral-900">
                     Auto-Layout & Variants Engine
                   </h3>
                   <p className="text-xs sm:text-sm text-neutral-600 mt-1">
@@ -237,7 +238,7 @@ export default function SkillsSection() {
               </div>
 
               {/* Live Preview Display */}
-              <div className="lg:col-span-7 rounded-2xl bg-[#0e1015] border border-neutral-800 p-8 flex flex-col items-center justify-center min-h-[300px] relative overflow-hidden shadow-2xl">
+              <div className="lg:col-span-7 rounded-2xl bg-[#0e1015] border border-neutral-800 p-5 sm:p-8 flex flex-col items-center justify-center min-h-[220px] sm:min-h-[300px] relative overflow-hidden shadow-2xl">
                 
                 <div className="absolute top-4 left-4 font-tech text-[10px] text-neutral-400 uppercase tracking-wider">
                   Live Canvas Render

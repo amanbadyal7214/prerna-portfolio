@@ -13,8 +13,8 @@ export default function ProcessSection() {
   const handleScroll = () => {
     if (!scrollRef.current) return;
     const scrollPos = scrollRef.current.scrollLeft;
-    // Each card is ~310px width + 20px gap = 330px
-    const cardWidth = 328;
+    const firstCard = scrollRef.current.children[0];
+    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width + 20 : 315;
     const newStep = Math.min(8, Math.max(1, Math.round(scrollPos / cardWidth) + 1));
     setActiveStep(newStep);
   };
@@ -22,7 +22,8 @@ export default function ProcessSection() {
   const scrollToStep = (stepNum) => {
     setActiveStep(stepNum);
     if (scrollRef.current) {
-      const cardWidth = 328;
+      const firstCard = scrollRef.current.children[0];
+      const cardWidth = firstCard ? firstCard.getBoundingClientRect().width + 20 : 315;
       scrollRef.current.scrollTo({
         left: (stepNum - 1) * cardWidth,
         behavior: 'smooth',
@@ -50,12 +51,12 @@ export default function ProcessSection() {
   };
 
   return (
-    <section id="process" className="pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-10 md:pb-12 bg-[#111111] text-[#F4F1EA] relative overflow-hidden select-none scroll-mt-20">
+    <section id="process" className="pt-12 sm:pt-20 md:pt-24 pb-8 sm:pb-10 md:pb-12 bg-[#111111] text-[#F4F1EA] relative overflow-hidden select-none scroll-mt-20">
       
       {/* Background Subtle Accent Gradients */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] bg-[#FF5A36]/5 blur-[160px] rounded-full pointer-events-none"></div>
 
-      <div className="max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-16 mb-2 sm:mb-3 md:mb-4 relative z-10">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-10 lg:px-16 mb-2 sm:mb-3 md:mb-4 relative z-10">
         
         {/* =========================================================================
             SECTION HEADER (Exact Figma Specs: Space Grotesk, JetBrains Mono, #FF5A36)
@@ -63,7 +64,7 @@ export default function ProcessSection() {
         <div className="flex items-end justify-between px-2 sm:px-4">
           <div>
             <h2 
-              className="font-space font-bold text-4xl sm:text-6xl md:text-[62px] text-[#F4F1EA] tracking-[-1.8px] leading-[0.88] uppercase"
+              className="font-space font-bold text-3xl sm:text-6xl md:text-[62px] text-[#F4F1EA] tracking-[-1.5px] sm:tracking-[-1.8px] leading-[0.92] sm:leading-[0.88] uppercase"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               HOW<br />I WORK.
@@ -71,22 +72,23 @@ export default function ProcessSection() {
           </div>
 
           <div className="flex flex-col items-end">
-            <div className="flex items-center gap-1.5 mb-1.5">
+            <div className="flex items-center gap-1.5 mb-1 sm:mb-1.5">
               <span 
-                className="font-mono-jb text-[9px] sm:text-[10px] uppercase tracking-[1.4px] text-[#FF5A36] font-semibold"
+                className="font-mono-jb text-[9px] sm:text-[10px] uppercase tracking-[1.2px] sm:tracking-[1.4px] text-[#FF5A36] font-semibold"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
-                DRAG TO EXPLORE
+                <span className="hidden sm:inline">DRAG TO EXPLORE</span>
+                <span className="sm:hidden">SWIPE CARDS</span>
               </span>
               <span className="text-[#FF5A36] text-[11px] font-bold">→</span>
             </div>
             
             <div 
-              className="font-space font-bold text-4xl sm:text-5xl md:text-[46px] tracking-[-1.4px] leading-none"
+              className="font-space font-bold text-3xl sm:text-5xl md:text-[46px] tracking-[-1px] sm:tracking-[-1.4px] leading-none"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               <span className="text-[#FF5A36]">{String(activeStep).padStart(2, '0')}</span>
-              <span className="text-[#77736C]/60 font-light text-3xl sm:text-4xl md:text-[40px]"> / 08</span>
+              <span className="text-[#77736C]/60 font-light text-2xl sm:text-4xl md:text-[40px]"> / 08</span>
             </div>
           </div>
         </div>
@@ -104,7 +106,7 @@ export default function ProcessSection() {
             src={curveTop} 
             alt="" 
             aria-hidden="true" 
-            className="w-full block h-[52px] sm:h-[70px] md:h-[88px] object-fill pointer-events-none select-none" 
+            className="w-full block h-[38px] sm:h-[70px] md:h-[88px] object-fill pointer-events-none select-none" 
           />
         </div>
 
@@ -123,7 +125,7 @@ export default function ProcessSection() {
               onMouseLeave={handleMouseLeaveOrUp}
               onMouseUp={handleMouseLeaveOrUp}
               onMouseMove={handleMouseMove}
-              className={`flex items-center gap-5 sm:gap-6 overflow-x-auto py-3 px-6 sm:px-12 md:px-20 snap-x snap-mandatory scroll-smooth relative z-10 ${
+              className={`flex items-center gap-4 sm:gap-6 overflow-x-auto py-3 px-4 sm:px-12 md:px-20 snap-x snap-mandatory touch-scroll no-scrollbar scroll-smooth relative z-10 ${
                 isDragging ? 'cursor-grabbing' : 'cursor-grab'
               }`}
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
@@ -1044,7 +1046,7 @@ export default function ProcessSection() {
             src={curveBottom} 
             alt="" 
             aria-hidden="true" 
-            className="w-full block h-[52px] sm:h-[70px] md:h-[88px] object-fill pointer-events-none select-none" 
+            className="w-full block h-[38px] sm:h-[70px] md:h-[88px] object-fill pointer-events-none select-none" 
           />
         </div>
       </div>
@@ -1052,14 +1054,14 @@ export default function ProcessSection() {
       {/* =========================================================================
           BOTTOM TIMELINE TRACK (Exact Figma: Line, glowing nodes, 01 - 08 numbers)
           ========================================================================= */}
-      <div className="max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10 pt-4 sm:pt-6 md:pt-8 pb-3">
-        <div className="relative py-4 max-w-[1200px] mx-auto">
+      <div className="max-w-[1360px] mx-auto px-3 sm:px-10 lg:px-16 relative z-10 pt-3 sm:pt-6 md:pt-8 pb-3">
+        <div className="relative py-2 sm:py-4 max-w-[1200px] mx-auto">
           
           {/* Horizontal Track Line */}
-          <div className="absolute top-[18px] left-[3%] right-[3%] h-[1.5px] bg-[#F4F1EA]/15 z-0"></div>
+          <div className="absolute top-[14px] sm:top-[18px] left-[3%] right-[3%] h-[1.5px] bg-[#F4F1EA]/15 z-0"></div>
 
           {/* 8 Clickable Node Markers & Numbers */}
-          <div className="relative z-10 grid grid-cols-8 gap-2">
+          <div className="relative z-10 grid grid-cols-8 gap-1 sm:gap-2">
             {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => {
               const isActive = num === activeStep;
               const stepNumStr = String(num).padStart(2, '0');
@@ -1068,22 +1070,23 @@ export default function ProcessSection() {
                 <button
                   key={num}
                   onClick={() => scrollToStep(num)}
-                  className="flex flex-col items-center group cursor-pointer focus:outline-none"
+                  className="flex flex-col items-center group cursor-pointer focus:outline-none py-1 active:scale-95 transition-transform"
+                  aria-label={`Jump to step ${num}`}
                 >
                   {/* Node Dot */}
-                  <div className="h-6 flex items-center justify-center mb-1">
+                  <div className="h-5 sm:h-6 flex items-center justify-center mb-0.5 sm:mb-1">
                     {isActive ? (
-                      <div className="w-3.5 h-3.5 rounded-full bg-[#FF5A36] border-2 border-[#FF5A36] shadow-[0_0_14px_#FF5A36] flex items-center justify-center transition-all duration-300 scale-110">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#F4F1EA]"></div>
+                      <div className="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-[#FF5A36] border-2 border-[#FF5A36] shadow-[0_0_14px_#FF5A36] flex items-center justify-center transition-all duration-300 scale-110">
+                        <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[#F4F1EA]"></div>
                       </div>
                     ) : (
-                      <div className="w-2 h-2 rounded-full bg-[#F4F1EA]/25 border border-[#F4F1EA]/15 group-hover:bg-[#F4F1EA]/50 transition-all duration-200"></div>
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#F4F1EA]/25 border border-[#F4F1EA]/15 group-hover:bg-[#F4F1EA]/50 transition-all duration-200"></div>
                     )}
                   </div>
 
                   {/* Step Number */}
                   <span 
-                    className={`text-sm sm:text-base font-mono-jb transition-all duration-200 ${
+                    className={`text-[10px] xs:text-xs sm:text-base font-mono-jb transition-all duration-200 ${
                       isActive 
                         ? 'text-[#FF5A36] font-semibold scale-110' 
                         : 'text-[#77736C]/70 font-normal group-hover:text-[#F4F1EA]'

@@ -24,21 +24,21 @@ export default function ContactFooter({ onOpenResume, onOpenContact }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* Editorial Big Sign-off */}
-        <div className="mb-16 md:mb-24">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-tech text-[#ff8a65] tracking-wider uppercase mb-6">
+        <div className="mb-12 sm:mb-20 md:mb-24">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] sm:text-xs font-tech text-[#ff8a65] tracking-wider uppercase mb-4 sm:mb-6">
             <Sparkles className="w-3.5 h-3.5 text-[#ff5722]" />
             <span>Open for Opportunities & Collaborations</span>
           </div>
 
-          <h2 className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl uppercase tracking-tighter text-white leading-[0.95] max-w-5xl">
+          <h2 className="font-display font-black text-3xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl uppercase tracking-tighter text-white leading-[0.98] sm:leading-[0.95] max-w-5xl">
             LET'S SHAPE<br />THE NEXT BIG<br />
             <span className="text-[#ff5722]">EXPERIENCE.</span>
           </h2>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
             <a
               href={`tel:${personalInfo.phone}`}
-              className="px-8 py-4 rounded-full bg-[#ff5722] hover:bg-[#ff6f43] text-white text-sm font-tech font-bold tracking-wider flex items-center gap-3 shadow-xl shadow-orange-600/30 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+              className="px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-[#ff5722] hover:bg-[#ff6f43] text-white text-xs sm:text-sm font-tech font-bold tracking-wider flex items-center justify-center gap-2.5 sm:gap-3 shadow-xl shadow-orange-600/30 active:scale-95 transition-all cursor-pointer"
               title={`Call ${personalInfo.phone}`}
             >
               <Phone className="w-4 h-4" />
@@ -48,61 +48,61 @@ export default function ContactFooter({ onOpenResume, onOpenContact }) {
 
             <button
               onClick={handleCopyEmail}
-              className="px-6 py-4 rounded-full bg-white/5 hover:bg-white/10 text-neutral-200 hover:text-white text-sm font-tech border border-white/10 flex items-center gap-2.5 transition-all cursor-pointer"
+              className="px-5 sm:px-6 py-3.5 sm:py-4 rounded-full bg-white/5 hover:bg-white/10 text-neutral-200 hover:text-white text-xs sm:text-sm font-tech border border-white/10 flex items-center justify-center gap-2.5 transition-all cursor-pointer active:scale-95"
             >
               {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-[#ff5722]" />}
-              <span>{copied ? 'Email Copied!' : personalInfo.email}</span>
+              <span className="truncate">{copied ? 'Email Copied!' : personalInfo.email}</span>
             </button>
           </div>
         </div>
 
         {/* Contact Matrix Links */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 py-12 border-y border-white/10 text-xs font-tech">
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 py-8 sm:py-12 border-y border-white/10 text-xs font-tech">
           
-          <div className="space-y-1">
-            <span className="text-neutral-500 uppercase tracking-wider block">Email Directly</span>
+          <div className="p-3.5 sm:p-0 rounded-xl bg-white/[0.03] sm:bg-transparent border border-white/5 sm:border-0 space-y-1">
+            <span className="text-neutral-500 uppercase tracking-wider block text-[10px] sm:text-xs">Email Directly</span>
             <a 
               href={`mailto:${personalInfo.email}`} 
-              className="text-white hover:text-[#ff5722] transition-colors font-medium flex items-center gap-1.5"
+              className="text-white hover:text-[#ff5722] transition-colors font-medium flex items-center gap-1.5 truncate"
             >
-              <Mail className="w-3.5 h-3.5 text-[#ff5722]" />
-              <span>{personalInfo.email}</span>
+              <Mail className="w-3.5 h-3.5 text-[#ff5722] shrink-0" />
+              <span className="truncate">{personalInfo.email}</span>
             </a>
           </div>
 
-          <div className="space-y-1">
-            <span className="text-neutral-500 uppercase tracking-wider block">Direct Phone</span>
+          <div className="p-3.5 sm:p-0 rounded-xl bg-white/[0.03] sm:bg-transparent border border-white/5 sm:border-0 space-y-1">
+            <span className="text-neutral-500 uppercase tracking-wider block text-[10px] sm:text-xs">Direct Phone</span>
             <a 
               href={`tel:${personalInfo.phone}`} 
               className="text-white hover:text-[#ff5722] transition-colors font-medium flex items-center gap-1.5"
             >
-              <Phone className="w-3.5 h-3.5 text-[#ff5722]" />
+              <Phone className="w-3.5 h-3.5 text-[#ff5722] shrink-0" />
               <span>{personalInfo.phone}</span>
             </a>
           </div>
 
-          <div className="space-y-1">
-            <span className="text-neutral-500 uppercase tracking-wider block">LinkedIn Profile</span>
+          <div className="p-3.5 sm:p-0 rounded-xl bg-white/[0.03] sm:bg-transparent border border-white/5 sm:border-0 space-y-1">
+            <span className="text-neutral-500 uppercase tracking-wider block text-[10px] sm:text-xs">LinkedIn Profile</span>
             <a 
               href={personalInfo.linkedin} 
               target="_blank" 
               rel="noreferrer"
               className="text-white hover:text-[#ff5722] transition-colors font-medium flex items-center gap-1.5"
             >
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#ff5722]" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#ff5722] shrink-0" />
               <span>in/prerna-sablok30</span>
             </a>
           </div>
 
-          <div className="space-y-1">
-            <span className="text-neutral-500 uppercase tracking-wider block">Behance Portfolio</span>
+          <div className="p-3.5 sm:p-0 rounded-xl bg-white/[0.03] sm:bg-transparent border border-white/5 sm:border-0 space-y-1">
+            <span className="text-neutral-500 uppercase tracking-wider block text-[10px] sm:text-xs">Behance Portfolio</span>
             <a 
               href={personalInfo.behance} 
               target="_blank" 
               rel="noreferrer"
               className="text-white hover:text-[#ff5722] transition-colors font-medium flex items-center gap-1.5"
             >
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#ff5722]" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#ff5722] shrink-0" />
               <span>behance.net/Prerna_Sablok30</span>
             </a>
           </div>
@@ -110,10 +110,10 @@ export default function ContactFooter({ onOpenResume, onOpenContact }) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-tech text-neutral-500">
-          <div className="flex items-center gap-2">
-            <span>© {new Date().getFullYear()} {personalInfo.name}. All Rights Reserved.</span>
-            <span>•</span>
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-tech text-neutral-500 text-center sm:text-left">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+            <span>© {new Date().getFullYear()} {personalInfo.name}.</span>
+            <span className="hidden sm:inline">•</span>
             <span>UI/UX Designer</span>
           </div>
 

@@ -4,28 +4,28 @@ import { GraduationCap, Award, CheckCircle2, MapPin, Calendar, Sparkles } from '
 
 export default function EducationCertificationsSection() {
   return (
-    <section id="education" className="py-24 md:py-32 bg-[#0b0c0e] text-white relative border-t border-white/5">
+    <section id="education" className="py-16 sm:py-24 md:py-32 bg-[#0b0c0e] text-white relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12">
           
           {/* Left Column: Education */}
-          <div className="lg:col-span-6 space-y-8">
+          <div className="lg:col-span-6 space-y-6 sm:space-y-8">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-tech text-[#ff8a65] tracking-wider uppercase mb-3">
                 <GraduationCap className="w-3.5 h-3.5 text-[#ff5722]" />
                 <span>Academic Foundations</span>
               </div>
-              <h2 className="font-display font-black text-3xl sm:text-4xl uppercase text-white tracking-tight">
+              <h2 className="font-display font-black text-2xl xs:text-3xl sm:text-4xl uppercase text-white tracking-tight">
                 Education.
               </h2>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {educationData.map((edu, idx) => (
                 <div 
                   key={idx}
-                  className="p-6 sm:p-7 rounded-2xl bg-[#12141a] border border-white/10 hover:border-white/20 transition-all space-y-3"
+                  className="p-4 xs:p-5 sm:p-7 rounded-2xl bg-[#12141a] border border-white/10 hover:border-white/20 transition-all space-y-3"
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="font-tech text-xs text-[#ff8a65] font-semibold">
@@ -58,22 +58,22 @@ export default function EducationCertificationsSection() {
           </div>
 
           {/* Right Column: Certifications */}
-          <div className="lg:col-span-6 space-y-8">
+          <div className="lg:col-span-6 space-y-6 sm:space-y-8">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-tech text-[#ff8a65] tracking-wider uppercase mb-3">
                 <Award className="w-3.5 h-3.5 text-[#ff5722]" />
                 <span>Verified Credentials</span>
               </div>
-              <h2 className="font-display font-black text-3xl sm:text-4xl uppercase text-white tracking-tight">
+              <h2 className="font-display font-black text-2xl xs:text-3xl sm:text-4xl uppercase text-white tracking-tight">
                 Certifications.
               </h2>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3.5 sm:space-y-4">
               {certificationsData.map((cert, idx) => (
                 <div 
                   key={idx}
-                  className="p-5 rounded-2xl bg-[#12141a] border border-white/10 hover:border-[#ff5722]/40 transition-all flex items-start justify-between gap-4 group"
+                  className="p-4 xs:p-5 rounded-2xl bg-[#12141a] border border-white/10 hover:border-[#ff5722]/40 transition-all flex items-start justify-between gap-3.5 sm:gap-4 group"
                 >
                   <div className="space-y-1.5 flex-1">
                     <div className="flex items-center gap-2">
